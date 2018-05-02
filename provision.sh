@@ -2,12 +2,6 @@
 
 set -x
 
-internal_ip=192.168.1.1
-
-interfaces=$(ifconfig -a | perl scripts/parse_ifconfig.pl "$internal_ip")
-nat_interface=$(echo "$interfaces" | cut -d, -f 1)
-internal_interface=$(echo "$interfaces" | cut -d, -f 2)
-
 # DOCKER
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
