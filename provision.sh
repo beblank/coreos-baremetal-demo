@@ -19,13 +19,13 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-ip_forward.conf
 sudo mkdir /etc/iptables
 INTERNAL_INTERFACE="$internal_interface" NAT_INTERFACE="$nat_interface" \
-    envsubst '$NAT_INTERFACE $INTERNAL_INTERFACE' < /files/iptables.envsubst.tpl > /etc/iptables/rules.v4
+    envsubst '$NAT_INTERFACE $INTERNAL_INTERFACE' < files/iptables.envsubst.tpl > /etc/iptables/rules.v4
 sudo apt-get install -y iptables-persistent
 
 # DNSMASQ
 INTERNAL_INTERFACE="$internal_interface" INTERNAL_IP="$internal_ip" \
-    envsubst '$INTERNAL_IP $INTERNAL_INTERFACE' < /files/dnsmasq.conf.envsubst.tpl > /etc/dnsmasq.conf
-sudo cp /files/dnsmasq.service /etc/systemd/system
+    envsubst '$INTERNAL_IP $INTERNAL_INTERFACE' < files/dnsmasq.conf.envsubst.tpl > /etc/dnsmasq.conf
+sudo cp files/dnsmasq.service /etc/systemd/system
 sudo systemctl enable /etc/systemd/system/dnsmasq.service
 sudo systemctl start dnsmasq.service
 
@@ -33,15 +33,15 @@ sudo systemctl start dnsmasq.service
 sudo mkdir -p /etc/matchbox
 sudo cp /certs/* /etc/matchbox
 sudo mkdir -p /var/lib/matchbox/scripts
-sudo cp /files/get-coreos /var/lib/matchbox/scripts
-sudo /var/lib/matchbox/scripts/get-coreos stable 1465.8.0 /var/lib/matchbox/assets
+sudo cp files/get-coreos /var/lib/matchbox/scripts
+sudo /var/lib/matchbox/scripts/get-coreos stable 1688.5.3 /var/lib/matchbox/assets
 
-sudo cp /files/matchbox.service /etc/systemd/system
+sudo cp files/matchbox.service /etc/systemd/system
 sudo systemctl enable /etc/systemd/system/matchbox.service
 sudo systemctl start matchbox.service
 
 # ubuntu user setup
-sudo cp /files/id_rsa* /home/ubuntu/.ssh
+sudo cp files/id_rsa* /home/ubuntu/.ssh
 sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/id_rsa*
 sudo chmod 600 /home/ubuntu/.ssh/id_rsa
 sudo usermod -G docker ubuntu
