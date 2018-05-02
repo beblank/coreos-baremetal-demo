@@ -31,7 +31,7 @@ sudo systemctl start dnsmasq.service
 
 # MATCHBOX
 sudo mkdir -p /etc/matchbox
-sudo cp /certs/* /etc/matchbox
+sudo cp certs/* /etc/matchbox
 sudo mkdir -p /var/lib/matchbox/scripts
 sudo cp files/get-coreos /var/lib/matchbox/scripts
 sudo /var/lib/matchbox/scripts/get-coreos stable 1688.5.3 /var/lib/matchbox/assets
@@ -58,7 +58,7 @@ sudo cp terraform-provider-matchbox-v0.2.2-linux-amd64/terraform-provider-matchb
 popd
 sudo rm -rf "$temp_dir"
 sudo mkdir -p /home/ubuntu/.matchbox/infra-local
-sudo cp /certs/* /home/ubuntu/.matchbox/infra-local
+sudo cp certs/* /home/ubuntu/.matchbox/infra-local
 sudo chown -R ubuntu:ubuntu /home/ubuntu/terraform
 
 # SERVICES CHECK
