@@ -17,10 +17,10 @@ variable "etcd_initial_cluster" {
 
 variable "matchbox_http_endpoint" {
   description = "Matchbox HTTP endpoint"
-  default     = "provisioner-1.infra.local:8080"
+  default     = "matchbox.example.com:8080"
 }
 
 variable "matchbox_rpc_endpoint" {
   description = "Matchbox gRPC endpoint"
-  default     = "provisioner-1.infra.local:8081"
+  default     = "matchbox.example.com:8081"
 }
