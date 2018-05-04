@@ -1,8 +1,8 @@
 data "ignition_config" "master" {
-  networkd = [
-    "${module.ignition_networkd.10_internal0_link}",
-    "${module.ignition_networkd.20_internal0_network}",
-  ]
+  // networkd = [
+  //   "${module.ignition_networkd.10_internal0_link}",
+  //   "${module.ignition_networkd.20_internal0_network}",
+  // ]
 
   users = [
     "${module.ignition_users.demo}",
