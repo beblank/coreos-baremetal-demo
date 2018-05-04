@@ -1,8 +1,8 @@
 provider "matchbox" {
   endpoint    = "${var.matchbox_rpc_endpoint}"
-  client_cert = "${file("~/.matchbox/infra-local/client.crt")}"
-  client_key  = "${file("~/.matchbox/infra-local/client.key")}"
-  ca          = "${file("~/.matchbox/infra-local/ca.crt")}"
+  client_cert = "${file("~/.matchbox/client.crt")}"
+  client_key  = "${file("~/.matchbox/client.key")}"
+  ca          = "${file("~/.matchbox/ca.crt")}"
 }
 
 resource "matchbox_group" "master" {
