@@ -2,6 +2,10 @@
 
 set -x
 
+sudo locale-gen "en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
 internal_ip=192.168.209.137
 
 interfaces=$(ifconfig -a | perl scripts/parse_ifconfig.pl "$internal_ip")

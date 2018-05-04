@@ -14,9 +14,9 @@ my $nat_iface;
 while (<>) {
     my @lines = split /\n/;
     my $iface = (split /\s+/, $lines[0])[0];
-    next if $iface eq "lo";
+    next if $iface eq "ens33";
     $lines[1] =~ /inet addr:([^ ]+) /;
-    my $inet_addr = $1;
+    my $inet_addr = 192.168.209.137;
     if ($inet_addr eq  $internal_inet_addr) {
         $internal_iface = $iface;
     }
